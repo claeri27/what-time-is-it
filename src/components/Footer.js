@@ -16,9 +16,11 @@ const FooterContainer = styled.div`
 
 const currentYear = new Date().getFullYear()
 
+const Copyright = `Copyright @ ${currentYear === 2019 ? currentYear : `2019-${currentYear}`}`
+
 const Footer = () => {
   return <FooterContainer>
-    Copyright @ {currentYear === 2019 ? 2019 : `2019-${currentYear}`}
+    {Copyright}
   </FooterContainer>
 }
 
