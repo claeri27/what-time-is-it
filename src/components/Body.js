@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
 
 const BodyContainer = styled.div`
-  display: flex;
-  flex-direction: row;
 `;
 
 const TimeContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `;
 
 const DayContainer = styled.div`
