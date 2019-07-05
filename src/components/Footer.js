@@ -9,7 +9,7 @@ const FooterContainer = styled.div`
   bottom: 0;
   width: 100%;
   min-height: 10vh;
-  background-color: grey;
+  background-color: red;
   color: white;
   align-items: center;
   justify-content: center;
