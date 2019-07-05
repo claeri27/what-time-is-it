@@ -2,15 +2,20 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
 
 const BodyContainer = styled.div`
-`;
-
-const TimeContainer = styled.div`
   display: flex;
   flex-direction: row;
 `;
 
-const NumberContainer = styled.p`
-  padding: 10px;
+const TimeContainer = styled.div`
+`;
+
+const DayContainer = styled.div`
+`;
+
+const DateContainer = styled.div`
+`;
+
+const NumberContainer = styled.div`
 `
 
 const FormattedDate = () => { 
@@ -21,6 +26,7 @@ const FormattedDate = () => {
   const [month, setMonth] = useState(rawDate.getMonth() + 1);
   const [day, setDay] = useState(rawDate.getDay());
   const [year, setYear] = useState(rawDate.getFullYear())
+  const [weekDay, setWeekDay] = useState(rawDate.getDay());
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -30,19 +36,45 @@ const FormattedDate = () => {
       setMonth(new Date().getMonth() + 1)
       setDay(new Date().getDay())
       setYear(new Date().getFullYear())
+      setWeekDay(new Date().getDay())
     }, 1000)
+
     return () => {
       clearInterval(interval)
     }
   }, [])
 
+  const dayOfTheWeek = () => {
+    switch(weekDay) {
+      case 0:
+        return 'Sunday'
+      case 1:
+        return 'Monday' 
+      case 2:
+        return 'Tuesday'
+      case 3:
+        return 'Wednesday'
+      case 4:
+        return 'Thursday'
+      case 5:
+        return 'Friday'
+      case 6:
+        return 'Saturday'
+      default:
+        return 'ERROR'
+    }
+  }
+
   return <TimeContainer>
-    <NumberContainer>{hours}</NumberContainer>
-    <NumberContainer>{minutes}</NumberContainer>
-    <NumberContainer>{seconds}</NumberContainer>
-    <NumberContainer>{month}</NumberContainer>
-    <NumberContainer>{day}</NumberContainer>
-    <NumberContainer>{year}</NumberContainer>
+    <NumberContainer>
+      {hours > 12 ? hours - 12 : hours}:{minutes < 10 ? '0' + minutes : minutes}:{seconds < 10 ? '0' + seconds : seconds} {hours < 12 ? 'AM' : 'PM'}
+    </NumberContainer>
+    <DayContainer>
+      {dayOfTheWeek()}
+    </DayContainer>
+    <DateContainer>
+      {day}/{month}/{year}
+    </DateContainer>
   </TimeContainer>
 }
 
