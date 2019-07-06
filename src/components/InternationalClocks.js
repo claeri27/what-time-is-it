@@ -57,10 +57,10 @@ const ClockData = styled.div`
   justify-content: center;
 `;
 
-const City = styled.h2`
+const City = styled.div`
 `;
 
-const CityTime = styled.h3`
+const CityTime = styled.div`
 `;
 
 const InternationalClocks = () => {
