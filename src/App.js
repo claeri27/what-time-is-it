@@ -25,6 +25,14 @@ const AppHeader = styled.h1`
 `;
 
 const Button = styled.button`
+  position: absolute;
+  right: 7px;
+  top: 7px;
+  padding: 13px;
+  background: ${props => props.theme.colors.buttonColor};
+  user-select: none;
+  border-radius: 5px;
+  &:focus {outline: 0;}
 `;
 
 const App = () => {
@@ -39,7 +47,7 @@ const App = () => {
         <Button onClick={() => {
           setLightMode(!lightMode);
           localStorage.setItem("lightMode", !lightMode);
-        }}>THEME</Button>
+        }}></Button>
       </AppHeader>
       <Body />
       <Footer />

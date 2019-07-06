@@ -6,13 +6,16 @@ const TimeAndDateContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 2em;
 `;
 
 const TimeContainer = styled.div`
+  padding: 10px;
+  font-size: 2em;
 `;
 
 const DateContainer = styled.div`
+  padding: 10px;
+  font-size: 1.8em;
 `;
 
 const FormatDate = () => { 
@@ -72,9 +75,15 @@ const FormatDate = () => {
     }
   }
 
+  const formatHours = () => {
+    if (hours === 0) return 12
+    else if (hours > 12) return hours - 12
+    else return hours
+  }
+
   return <TimeAndDateContainer>
     <TimeContainer>
-      {hours > 12 ? hours - 12 : hours}:{minutes < 10 ? '0' + minutes : minutes}:{seconds < 10 ? '0' + seconds : seconds} {hours < 12 ? 'AM' : 'PM'}
+      {formatHours()}:{minutes < 10 ? '0' + minutes : minutes}:{seconds < 10 ? '0' + seconds : seconds} {hours < 12 ? 'AM' : 'PM'}
     </TimeContainer>
     <DateContainer>
       {dayOfTheWeek()} {monthString()} {day}, {year}
