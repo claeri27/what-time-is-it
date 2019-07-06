@@ -9,7 +9,7 @@ const FooterContainer = styled.div`
   bottom: 0;
   width: 100%;
   min-height: 8vh;
-  background-color: blue;
+  background: ${props => props.theme.colors.footerColor};
   color: white;
   align-items: center;
   justify-content: center;

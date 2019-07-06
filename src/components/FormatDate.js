@@ -46,7 +46,7 @@ const DateContainer = styled.div`
   padding: 10px;
   font-size: 2em;
   font-family: 'Ubuntu', sans-serif;
-  border-bottom: 5px solid blue;
+  border-bottom: 5px solid ${props => props.theme.colors.borderColor};
 `;
 
 const ColonContainer = styled.div`
