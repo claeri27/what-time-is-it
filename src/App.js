@@ -28,14 +28,18 @@ const Button = styled.button`
 `;
 
 const App = () => {
-  const [lightMode, setLightMode] = useState(false);
+  const stored = localStorage.getItem("lightMode")
+  const [lightMode, setLightMode] = useState(stored === "true" ? true : false);
 
   return <ThemeProvider theme={lightMode === false ? darkTheme : lightTheme}>
     <AppContainer>
       <GlobalStyle />
       <AppHeader>
         What time is it right now?
-        <Button onClick={() => lightMode === false ? setLightMode(true) : setLightMode(false)}>THEME</Button>
+        <Button onClick={() => {
+          setLightMode(!lightMode);
+          localStorage.setItem("lightMode", !lightMode);
+        }}>THEME</Button>
       </AppHeader>
       <Body />
       <Footer />
