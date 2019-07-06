@@ -20,8 +20,9 @@ const AppHeader = styled.h1`
   align-items: center;
   justify-content: center;
   font-family: 'Oleo Script Swash Caps', cursive;
-  font-size: 3em;
+  font-size: 2.3em;
   user-select: none;
+  margin-bottom: 10px;
 `;
 
 const Button = styled.button`
@@ -32,6 +33,7 @@ const Button = styled.button`
   background: ${props => props.theme.colors.buttonColor};
   user-select: none;
   border-radius: 5px;
+  cursor: pointer;
   &:focus {outline: 0;}
 `;
 
@@ -43,7 +45,6 @@ const App = () => {
     <AppContainer>
       <GlobalStyle />
       <AppHeader>
-        What time is it right now?
         <Button onClick={() => {
           setLightMode(!lightMode);
           localStorage.setItem("lightMode", !lightMode);

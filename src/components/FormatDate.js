@@ -12,7 +12,7 @@ const ClockContainer = styled.div`
 const TimeContainer = styled.div`
   display: flex;
   padding: 10px;
-  font-size: 5em;
+  font-size: 3em;
 `;
 
 const HoursContainer = styled.div`
@@ -27,24 +27,26 @@ const MinutesContainer = styled.div`
   background: ${props => props.theme.colors.clockBackground};
   border-radius: 10px;
   margin-right: 5px;
-  width: 90px;
+  width: 52px;
 `;
 
 const SecondsContainer = styled.div`
   padding: 20px;
-  width: 92px;
+  width: 55px;
   background: ${props => props.theme.colors.clockBackground};
   border-radius: 10px;
 `;
 
 const AMPMContainer = styled.div`
   padding: 20px;
+  font-family: 'Ubuntu', sans-serif;
 `;
 
 const DateContainer = styled.div`
-  margin-top: 20px;
   padding: 10px;
-  font-size: 3em;
+  font-size: 2em;
+  font-family: 'Ubuntu', sans-serif;
+  border-bottom: 5px solid blue;
 `;
 
 const ColonContainer = styled.div`
