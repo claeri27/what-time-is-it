@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
 
-const TimeAndDateContainer = styled.div`
+const ClockContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,14 +10,55 @@ const TimeAndDateContainer = styled.div`
 `;
 
 const TimeContainer = styled.div`
+  display: flex;
   padding: 10px;
-  font-size: 2em;
+  font-size: 5em;
+`;
+
+const HoursContainer = styled.div`
+  padding: 20px;
+  background: ${props => props.theme.colors.clockBackground};
+  border-radius: 10px;
+  margin-right: 5px;
+`;
+
+const MinutesContainer = styled.div`
+  padding: 20px;
+  background: ${props => props.theme.colors.clockBackground};
+  border-radius: 10px;
+  margin-right: 5px;
+  width: 90px;
+`;
+
+const SecondsContainer = styled.div`
+  padding: 20px;
+  width: 92px;
+  background: ${props => props.theme.colors.clockBackground};
+  border-radius: 10px;
+`;
+
+const AMPMContainer = styled.div`
+  padding: 20px;
 `;
 
 const DateContainer = styled.div`
+  margin-top: 20px;
   padding: 10px;
-  font-size: 1.8em;
+  font-size: 3em;
 `;
+
+const ColonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 15px;
+  padding-right: 7px;
+`;
+
+// const TimeZoneContainer = styled.div`
+//   padding: 10px;
+//   font-size: 1.8em;
+// `;
 
 const FormatDate = () => { 
   const [hours, setHours] = useState(new Date().getHours());
@@ -81,23 +122,28 @@ const FormatDate = () => {
     else return hours
   }
 
-  const formatTimeZone = () => {
-    const unformatted = Intl.DateTimeFormat().resolvedOptions().timeZone
-    const formatted = unformatted.replace(/_/g, ' ')
-    return formatted
-  }
+  // const formatTimeZone = () => {
+  //   const unformatted = Intl.DateTimeFormat().resolvedOptions().timeZone
+  //   const formatted = unformatted.replace(/_/g, ' ')
+  //   return formatted
+  // }
 
-  return <TimeAndDateContainer>
+  return <ClockContainer>
     <TimeContainer>
-      {formatHours()}:{minutes < 10 ? '0' + minutes : minutes}:{seconds < 10 ? '0' + seconds : seconds} {hours < 12 ? 'AM' : 'PM'}
+      <HoursContainer>{formatHours()}</HoursContainer>
+      <ColonContainer>:</ColonContainer>
+      <MinutesContainer>{minutes < 10 ? '0' + minutes : minutes}</MinutesContainer> 
+      <ColonContainer>:</ColonContainer>
+      <SecondsContainer>{seconds < 10 ? '0' + seconds : seconds}</SecondsContainer> 
+      <AMPMContainer>{hours < 12 ? 'AM' : 'PM'}</AMPMContainer>
     </TimeContainer>
     <DateContainer>
       {dayOfTheWeek()} {monthString()} {day}, {year}
     </DateContainer>
-    <DateContainer>
+    {/* <TimeZoneContainer>
       {formatTimeZone()}
-    </DateContainer>
-  </TimeAndDateContainer>
+    </TimeZoneContainer> */}
+  </ClockContainer>
 }
 
 export default FormatDate
