@@ -8,16 +8,16 @@ const FooterContainer = styled.div`
   left: 0;
   bottom: 0;
   width: 100%;
-  min-height: 10vh;
-  background-color: red;
+  min-height: 8vh;
+  background-color: blue;
   color: white;
   align-items: center;
   justify-content: center;
-  font-size: 1.2em;
+  font-size: 1em;
 `;
 
 const Logo = styled.img `
-  max-height: 8vh;
+  max-height: 6vh;
   pointer-events: none;
   animation: ${keyframes`
     from {

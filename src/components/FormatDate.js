@@ -6,6 +6,7 @@ const TimeAndDateContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  user-select: none;
 `;
 
 const TimeContainer = styled.div`
@@ -19,14 +20,13 @@ const DateContainer = styled.div`
 `;
 
 const FormatDate = () => { 
-  const rawDate = new Date()
-  const [hours, setHours] = useState(rawDate.getHours());
-  const [minutes, setMinutes] = useState(rawDate.getMinutes());
-  const [seconds, setSeconds] = useState(rawDate.getSeconds());
-  const [month, setMonth] = useState(rawDate.getMonth());
-  const [day, setDay] = useState(rawDate.getDay());
-  const [year, setYear] = useState(rawDate.getFullYear())
-  const [weekDay, setWeekDay] = useState(rawDate.getDay());
+  const [hours, setHours] = useState(new Date().getHours());
+  const [minutes, setMinutes] = useState(new Date().getMinutes());
+  const [seconds, setSeconds] = useState(new Date().getSeconds());
+  const [month, setMonth] = useState(new Date().getMonth());
+  const [day, setDay] = useState(new Date().getDay());
+  const [year, setYear] = useState(new Date().getFullYear())
+  const [weekDay, setWeekDay] = useState(new Date().getDay());
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -81,12 +81,21 @@ const FormatDate = () => {
     else return hours
   }
 
+  const formatTimeZone = () => {
+    const unformatted = Intl.DateTimeFormat().resolvedOptions().timeZone
+    const formatted = unformatted.replace(/_/g, ' ')
+    return formatted
+  }
+
   return <TimeAndDateContainer>
     <TimeContainer>
       {formatHours()}:{minutes < 10 ? '0' + minutes : minutes}:{seconds < 10 ? '0' + seconds : seconds} {hours < 12 ? 'AM' : 'PM'}
     </TimeContainer>
     <DateContainer>
       {dayOfTheWeek()} {monthString()} {day}, {year}
+    </DateContainer>
+    <DateContainer>
+      {formatTimeZone()}
     </DateContainer>
   </TimeAndDateContainer>
 }
