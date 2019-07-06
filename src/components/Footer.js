@@ -13,6 +13,7 @@ const FooterContainer = styled.div`
   color: white;
   align-items: center;
   justify-content: center;
+  font-size: 1.2em;
 `;
 
 const Logo = styled.img `
