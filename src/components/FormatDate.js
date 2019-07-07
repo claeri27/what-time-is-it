@@ -24,12 +24,13 @@ const TimeContainer = styled.div`
   display: flex;
   padding: 10px;
   @media (min-width: ${size.mobileS}) {
-    margin-top: 15px;
+    margin-top: 80px;
     font-size: 1.3em;
+    margin-left: 30px;
   }
   @media (min-width: ${size.mobileM}) {
-    margin-top: 100px;
-    font-size: 2em;
+    margin-top: 150px;
+    font-size: 2.3em;
   }
   @media (min-width: ${size.mobileL}) {
     margin-top: 120px;
@@ -87,8 +88,8 @@ const DateContainer = styled.div`
     font-size: 1em;
   }
   @media (min-width: ${size.mobileM}) {
-    margin: 10px;
-    font-size: 1.2em;
+    margin: 13px;
+    font-size: 2em;
   }
   @media (min-width: ${size.mobileL}) {
     margin: 15px;
